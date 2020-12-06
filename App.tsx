@@ -63,6 +63,7 @@ const App: React.FC = () => {
       )}
       <Text style={{ marginTop: 20 }}>Autor:</Text>
       <Text style={{ fontWeight: 'bold' }}>Łukasz Kurpiewski</Text>
+      <Text>s22004</Text>
     </SView>
   );
 };

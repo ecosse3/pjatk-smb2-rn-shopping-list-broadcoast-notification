@@ -4,6 +4,7 @@
 
 import { AppRegistry, Platform } from 'react-native';
 import PushNotification from 'react-native-push-notification';
+import SendIntentAndroid from 'react-native-send-intent';
 import App from './App';
 import { name as appName } from './app.json';
 
@@ -16,6 +17,9 @@ PushNotification.configure({
   // (required) Called when a remote is received or opened, or local notification is opened
   onNotification(notification) {
     console.log('NOTIFICATION:', notification);
+    SendIntentAndroid.openApp('com.pjatksmb1rnshoppinglist').then((wasOpened) =>
+      console.log(wasOpened)
+    );
   },
 
   // IOS ONLY (optional): default: all - Permissions to register.
