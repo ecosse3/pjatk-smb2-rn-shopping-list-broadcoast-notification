@@ -8,6 +8,8 @@ target 'PjatkSmb2RnShoppingListBroadcoastNotification' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'react-native-receive-sharing-intent', :path => '../node_modules/react-native-receive-sharing-intent'
+
   target 'PjatkSmb2RnShoppingListBroadcoastNotificationTests' do
     inherit! :complete
     # Pods for testing
