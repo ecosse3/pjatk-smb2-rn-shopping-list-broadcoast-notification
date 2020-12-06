@@ -21,11 +21,21 @@ const LastNotificationView = styled.View`
 `;
 
 const App: React.FC = () => {
-  const [receivedText, setReceivedText] = useState(null);
+  const [receivedText, setReceivedText] = useState<string | null>(null);
 
   useEffect(() => {
     ReceiveSharingIntent.getReceivedFiles(
-      (files) => {
+      (
+        files: {
+          filePath: string;
+          text: string;
+          weblink: string;
+          mimeType: string;
+          contentUri: string;
+          fileName: string;
+          extension: string;
+        }[]
+      ) => {
         console.log(files);
         setReceivedText(files[0].text);
         PushNotification.localNotification({
@@ -37,7 +47,7 @@ const App: React.FC = () => {
           message: files[0].text
         });
       },
-      (error) => {
+      (error: string) => {
         console.log(error);
       }
     );
@@ -50,7 +60,7 @@ const App: React.FC = () => {
 
   return (
     <SView>
-      <Text>Welcome to Broadcoast Receiver for Shopping List app</Text>
+      <Text>Witaj w Broadcoast Receiver dla aplikacji Lista zakupów</Text>
       {receivedText ? (
         <LastNotificationView>
           <Text style={{ fontWeight: 'bold' }}>Ostatnie powiadomienie:</Text>
